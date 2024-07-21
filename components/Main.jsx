@@ -5,6 +5,8 @@ import { getProducts } from '../lib/products';
 import { formatCurrency } from '../lib/utils';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ProductCard, { AnimatedProductCard } from './ProductCard';
+import { Link } from 'expo-router';
+import { InfoCircleIcon } from './Icons';
 
 export function Main() {
   // States
@@ -25,6 +27,10 @@ export function Main() {
 
   return (
     <View style={{ paddingTop: inset.top, paddingBottom: inset.bottom, paddingLeft: inset.left, paddingRight: inset.right, backgroundColor: '#000', flex: 1 }}>
+        <Link href={`/details`} className="bg-blue-500 text-white p-2 rounded-lg flex-row items-center gap-2">
+          <InfoCircleIcon />
+          Product details
+        </Link>
         {products.length > 0 ? (
          <FlatList 
             data={products}

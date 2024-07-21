@@ -1,17 +1,20 @@
 import { View, Text, Image, StyleSheet, Animated } from 'react-native'
 import { formatCurrency } from '../lib/utils';
 import { useEffect, useRef } from 'react';
+import { Price } from './Price';
 
 const ProductCard = ({ product }) => {
   return (
-    <View key={product.id} style={styles.productContainer}>
+    <View key={product.id} className="flex-row bg-slate-400/10 p-4 rounded-xl gap-4 mb-10">
         <Image source={{ uri: product.image }} style={styles.productImage} />
         <View style={styles.productInfo}>
-        <Text style={styles.productTitle}>{product.title}</Text>
-        <Text style={styles.productPrice}>
-            {formatCurrency(product.price)}
-        </Text>
-        <Text style={styles.productDescription}>{product.description}</Text>
+          <Text style={styles.productTitle}
+            className="text-2xl font-bold text-white text-opacity-80"
+          >{product.title}</Text>
+          <Price price={product.price} />
+          <Text style={styles.productDescription} 
+            className=" text-white text-opacity-50"
+          >{product.description}</Text>
         </View>
     </View>
   )
